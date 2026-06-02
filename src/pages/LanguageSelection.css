@@ -1,0 +1,78 @@
+.onboarding-layout {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--light-gray) 100%);
+  padding: var(--space-4);
+}
+
+.onboarding-card {
+  background: var(--white);
+  padding: var(--space-8);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-card);
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+}
+
+.brand-header {
+  margin-bottom: var(--space-6);
+}
+.brand-header .brand-logo {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-2);
+}
+.welcome-text {
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.selection-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--space-5);
+  color: var(--text-main);
+}
+
+.language-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.lang-btn {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem var(--space-5);
+  border: 1px solid var(--med-gray);
+  border-radius: var(--radius-lg);
+  background: var(--white);
+  transition: all 0.2s ease;
+}
+
+.lang-btn:hover {
+  border-color: var(--primary-color);
+  background-color: var(--primary-light);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.lang-native {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.lang-sub {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.onboarding-footer {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}

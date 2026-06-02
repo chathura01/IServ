@@ -1,0 +1,128 @@
+/* Chat Layout Styles */
+.chat-layout {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+}
+
+.chat-container {
+  display: flex;
+  height: calc(100vh - 12rem);
+  min-height: 600px;
+  overflow: hidden;
+  padding: 0;
+}
+
+.chat-sidebar {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  border-right: 1px solid var(--med-gray);
+}
+
+.chat-search {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--med-gray);
+}
+
+.chat-list {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.chat-list-item {
+  display: flex;
+  gap: var(--space-3);
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--med-gray);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chat-list-item:hover {
+  background-color: var(--light-gray);
+}
+
+.chat-list-item.active {
+  background-color: var(--primary-light);
+}
+
+.chat-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+}
+
+.chat-header {
+  padding: var(--space-4) var(--space-5);
+  border-bottom: 1px solid var(--med-gray);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-service-context {
+  padding: var(--space-3) var(--space-5);
+  background-color: #f8fafc;
+  border-bottom: 1px solid var(--med-gray);
+}
+
+.chat-messages {
+  flex: 1;
+  padding: var(--space-5);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.message {
+  display: flex;
+  max-width: 70%;
+}
+
+.message.incoming {
+  align-self: flex-start;
+}
+
+.message.outgoing {
+  align-self: flex-end;
+}
+
+.message-content {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+}
+
+.message.incoming .message-content {
+  background-color: var(--light-gray);
+  border-top-left-radius: 0;
+}
+
+.message.outgoing .message-content {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border-top-right-radius: 0;
+}
+
+.chat-input-area {
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--med-gray);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  background-color: var(--white);
+}
+
+.chat-input {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  border-radius: 2rem;
+  border: 1px solid var(--med-gray);
+  outline: none;
+  font-family: inherit;
+}
+.chat-input:focus {
+  border-color: var(--primary-color);
+}

@@ -1,0 +1,80 @@
+.provider-banner {
+  background-color: var(--accent-navy);
+  color: var(--white);
+  padding: var(--space-8) 0;
+  margin-top: -1px;
+}
+
+.banner-content {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.avatar-wrapper img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 4px solid var(--white);
+  object-fit: cover;
+}
+
+.provider-header-info {
+  flex: 1;
+}
+
+.provider-header-info h1 {
+  font-size: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.verified-icon {
+  color: var(--success-green);
+}
+
+.provider-tagline {
+  font-size: 1.25rem;
+  color: #ccd6f6;
+  margin-bottom: var(--space-3);
+}
+
+.provider-meta {
+  display: flex;
+  gap: var(--space-4);
+  font-size: 0.875rem;
+  color: #a8b2d1;
+}
+
+.provider-meta span {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.provider-actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.provider-layout {
+  display: flex;
+  gap: var(--space-6);
+  align-items: flex-start;
+}
+
+.provider-sidebar {
+  width: 300px;
+}
+
+.provider-main {
+  flex: 1;
+}
+
+.info-item strong {
+  font-size: 0.875rem;
+  color: var(--text-main);
+}
