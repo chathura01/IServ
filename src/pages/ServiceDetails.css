@@ -303,3 +303,59 @@
 .text-btn:hover { text-decoration: underline; color: var(--text-main); }
 .text-danger { color: var(--text-muted); }
 .text-danger:hover { color: var(--danger-red); }
+
+@media (max-width: 1024px) {
+  .service-details-layout {
+    flex-direction: column;
+  }
+
+  .service-sidebar {
+    width: 100%;
+    position: static;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .service-details-page {
+    padding: var(--space-4) 0 var(--space-8);
+  }
+
+  .detail-title {
+    font-size: 1.6rem;
+  }
+
+  .detail-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .stats-divider {
+    display: none;
+  }
+
+  .gallery-thumbnails {
+    flex-wrap: wrap;
+  }
+
+  .gallery-thumbnails img {
+    width: calc(50% - 0.375rem);
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reviews-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .section-block {
+    padding: var(--space-4);
+  }
+}

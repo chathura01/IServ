@@ -78,3 +78,48 @@
   font-size: 0.875rem;
   color: var(--text-main);
 }
+
+@media (max-width: 1024px) {
+  .provider-layout {
+    flex-direction: column;
+  }
+
+  .provider-sidebar {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .provider-header-info h1 {
+    font-size: 1.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .provider-tagline {
+    font-size: 1rem;
+  }
+
+  .provider-meta {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .provider-actions {
+    width: 100%;
+  }
+
+  .provider-actions .btn {
+    width: 100%;
+  }
+
+  .avatar-wrapper img {
+    width: 110px;
+    height: 110px;
+  }
+}

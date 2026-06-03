@@ -1,15 +1,42 @@
-import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
-import { LayoutDashboard, Package, Calendar, MessageSquare, Star, Settings, LogOut, Bell, User } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Outlet, Link, useLocation } from 'react-router-dom';
+import { LayoutDashboard, Package, Calendar, MessageSquare, Star, Settings, LogOut, Bell, User, Menu, X } from 'lucide-react';
 import './DashboardLayout.css';
 
 const DashboardLayout = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setSidebarOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = sidebarOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [sidebarOpen]);
+
   return (
     <div className="dashboard-layout">
-      {/* Sidebar */}
-      <aside className="sidebar">
+      <div
+        className={`mobile-nav-backdrop ${sidebarOpen ? 'is-visible' : ''}`}
+        onClick={() => setSidebarOpen(false)}
+        aria-hidden={!sidebarOpen}
+      />
+
+      <aside className={`sidebar ${sidebarOpen ? 'is-open' : ''}`}>
         <div className="sidebar-header">
           <Link to="/" className="brand-logo">IServ<span>.pro</span></Link>
+          <button
+            type="button"
+            className="icon-btn sidebar-close-btn"
+            onClick={() => setSidebarOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={22} />
+          </button>
         </div>
         <nav className="sidebar-nav">
           <Link to="/seller"><LayoutDashboard size={18} /> Dashboard</Link>
@@ -26,15 +53,19 @@ const DashboardLayout = () => {
         </div>
       </aside>
 
-      {/* Main Container */}
       <div className="dashboard-main">
-        {/* Topbar */}
         <header className="topbar">
-          <div className="topbar-search">
-            {/* Search Placeholder */}
-          </div>
+          <button
+            type="button"
+            className="icon-btn mobile-menu-btn"
+            onClick={() => setSidebarOpen(true)}
+            aria-label="Open menu"
+          >
+            <Menu size={22} />
+          </button>
+          <div className="topbar-search" />
           <div className="topbar-actions">
-            <button className="icon-btn"><Bell size={20} /></button>
+            <button type="button" className="icon-btn" aria-label="Notifications"><Bell size={20} /></button>
             <div className="user-profile">
               <img src="https://i.pravatar.cc/150?img=11" alt="Profile" className="avatar" />
               <div className="user-info">
@@ -45,7 +76,6 @@ const DashboardLayout = () => {
           </div>
         </header>
 
-        {/* Dynamic Content */}
         <div className="dashboard-content">
           <Outlet />
         </div>

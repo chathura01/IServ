@@ -1,9 +1,23 @@
-import React from 'react';
-import { Outlet, Link } from 'react-router-dom';
-import { Search, User, Menu } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Outlet, Link, useLocation } from 'react-router-dom';
+import { Search, Menu, X } from 'lucide-react';
 import './RootLayout.css';
 
 const RootLayout = () => {
+  const [navOpen, setNavOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    setNavOpen(false);
+  }, [location.pathname]);
+
+  useEffect(() => {
+    document.body.style.overflow = navOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [navOpen]);
+
   return (
     <div className="root-layout">
       <header className="navbar">
@@ -11,19 +25,39 @@ const RootLayout = () => {
           <Link to="/" className="brand-logo">
             IServ<span>.lk</span>
           </Link>
-          
-          <div className="nav-links">
-            <Link to="/search">Explore Services</Link>
-            <Link to="/seller">Become a Provider</Link>
-          </div>
 
-          <div className="nav-actions">
-            <button className="icon-btn"><Search size={20} /></button>
-            <Link to="/login" className="btn btn-outline">Login</Link>
-            <Link to="/register" className="btn btn-primary">Sign Up</Link>
+          <button
+            type="button"
+            className="icon-btn mobile-menu-btn"
+            onClick={() => setNavOpen((v) => !v)}
+            aria-label={navOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={navOpen}
+          >
+            {navOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+
+          <div className={`nav-panel ${navOpen ? 'is-open' : ''}`}>
+            <nav className="nav-links">
+              <Link to="/search">Explore Services</Link>
+              <Link to="/seller">Become a Provider</Link>
+            </nav>
+
+            <div className="nav-actions">
+              <button type="button" className="icon-btn" aria-label="Search"><Search size={20} /></button>
+              <Link to="/login" className="btn btn-outline">Login</Link>
+              <Link to="/register" className="btn btn-primary">Sign Up</Link>
+            </div>
           </div>
         </div>
       </header>
+
+      {navOpen && (
+        <div
+          className="mobile-nav-backdrop is-visible"
+          onClick={() => setNavOpen(false)}
+          aria-hidden="false"
+        />
+      )}
 
       <main className="main-content">
         <Outlet />

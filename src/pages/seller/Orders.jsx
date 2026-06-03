@@ -16,8 +16,8 @@ const Orders = () => {
            <button className="tab flex-1 pb-3 pt-3 fw-600 text-muted" style={{flex: 1, padding: '1rem', fontWeight: 600}}>Cancelled (1)</button>
         </div>
         
-        <div style={{overflowX: 'auto'}}>
-          <table className="w-100" style={{borderCollapse: 'collapse', textAlign: 'left', minWidth: '800px'}}>
+        <div className="table-responsive">
+          <table className="w-100" style={{borderCollapse: 'collapse', textAlign: 'left', minWidth: '720px'}}>
              <thead>
                <tr className="bg-light text-muted text-sm">
                  <th className="p-4 border-bottom" style={{padding: '1rem'}}>Client</th>

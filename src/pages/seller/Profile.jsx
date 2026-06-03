@@ -5,13 +5,13 @@ import './Seller.css';
 const Profile = () => {
   return (
     <div className="seller-profile-page pb-5">
-      <div className="seller-profile-header mb-6">
+      <div className="page-header-row seller-profile-header mb-6">
         <div className="seller-profile-header-copy">
            <h2 className="seller-profile-title">Provider Profile Management</h2>
            <p className="text-muted seller-profile-subtitle">Manage your public profile, contact details, and primary service focus.</p>
         </div>
         <div className="seller-profile-actions">
-           <button className="btn btn-primary profile-save-btn"><Save size={18}/> Save Changes</button>
+           <button type="button" className="btn btn-primary profile-save-btn"><Save size={18}/> Save Changes</button>
         </div>
       </div>
 
