@@ -131,7 +131,7 @@ const Search = () => {
           </div>
 
           {/* Pagination Placeholder */}
-          <div className="pagination" style={{marginTop: '2rem', display: 'flex', gap: '0.5rem', justifyContent: 'center'}}>
+          <div className="pagination" style={{marginTop: '2rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem', justifyContent: 'center'}}>
             <button className="btn btn-outline" disabled>Previous</button>
             <button className="btn btn-primary">1</button>
             <button className="btn btn-outline">2</button>

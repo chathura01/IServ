@@ -105,7 +105,7 @@ const ServiceDetails = () => {
             <div className="review-list">
                {/* Current User's Own Review */}
                <div className="review-item" style={{border: '1px solid var(--primary-light)', padding: '1.5rem', borderRadius: 'var(--radius-md)', marginBottom: '1.5rem', background: 'var(--white)'}}>
-                  <div className="reviewer-meta" style={{justifyContent: 'space-between'}}>
+                  <div className="reviewer-meta" style={{justifyContent: 'space-between', flexWrap: 'wrap'}}>
                     <div className="seller-meta-large">
                        <img src="https://i.pravatar.cc/150?img=1" alt="Me" className="reviewer-avatar" />
                        <div>
@@ -156,8 +156,8 @@ const ServiceDetails = () => {
               <button className="tab">Emergency</button>
             </div>
             <div className="booking-content">
-              <div className="price-header">
-                <h3>Standard Call Out</h3>
+              <div className="price-header" style={{flexWrap: 'wrap', gap: '0.5rem'}}>
+                <h3 style={{margin: 0}}>Standard Call Out</h3>
                 <span className="price-tag">Rs. 3,500</span>
               </div>
               <p className="package-desc">Inspection and minor repairs within 1 hour timeframe. Excludes material costs.</p>

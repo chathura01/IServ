@@ -377,3 +377,126 @@
   cursor: pointer;
   flex-shrink: 0;
 }
+
+.client-chat-plus-btn {
+  background: var(--light-gray);
+  border: none;
+  color: var(--text-main);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s;
+}
+
+.client-chat-plus-btn:hover {
+  background: var(--med-gray);
+}
+
+.client-chat-attach-popup {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 0;
+  background: var(--white);
+  border: 1px solid var(--med-gray);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  z-index: 20;
+  min-width: 140px;
+}
+
+.client-chat-attach-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  border: none;
+  background: transparent;
+  color: var(--text-main);
+  font-size: 0.875rem;
+  font-family: inherit;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  white-space: nowrap;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.client-chat-attach-item:hover {
+  background: var(--light-gray);
+}
+
+/* Ad context banner */
+.client-chat-ad-context {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 0.75rem 1.25rem;
+  background: #f0f7ff;
+  border-bottom: 1px solid #d0e8fc;
+  flex-shrink: 0;
+}
+
+.client-chat-ad-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 1px solid #cce3f5;
+}
+
+.client-chat-ad-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  min-width: 0;
+}
+
+.client-chat-ad-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--primary-color);
+}
+
+.client-chat-ad-info strong {
+  font-size: 0.875rem;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.client-chat-ad-link {
+  font-size: 0.8rem;
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.client-chat-ad-link:hover {
+  text-decoration: underline;
+}
+
+/* Sidebar ad tag chip */
+.client-chat-ad-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.72rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
