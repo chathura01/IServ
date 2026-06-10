@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import {
   Zap, Wrench, Monitor, Paintbrush, Scissors, Camera, Briefcase,
   ChevronRight, ChevronLeft, CheckCircle, UploadCloud, Plus, X, Image as ImageIcon,
-  ArrowLeft, Sparkles, Info
+  ArrowLeft, Sparkles, Info, Search
 } from 'lucide-react';
 import './Seller.css';
 
@@ -12,6 +12,8 @@ const STEP_COUNT = 4;
 const CreateAd = () => {
   const navigate = useNavigate();
   const [step, setStep] = useState(1);
+  const [categorySearch, setCategorySearch] = useState('');
+  const [subcategorySearch, setSubcategorySearch] = useState('');
   const stepLabels = ['Classification', 'Basic Details', 'Media & Pricing', 'Pro Features'];
 
   const [formData, setFormData] = useState({
@@ -107,10 +109,11 @@ const CreateAd = () => {
   const handlePrimaryCategoryClick = (categoryId) => {
     setFormData((prev) => {
       if (prev.category_id === categoryId) {
-        return { ...prev, category_id: null, subcategory_id: null };
+        return { ...prev, category_id: null, subcategory_id: null, subcategory_other: '' };
       }
-      return { ...prev, category_id: categoryId, subcategory_id: null };
+      return { ...prev, category_id: categoryId, subcategory_id: null, subcategory_other: '' };
     });
+    setSubcategorySearch('');
   };
 
   const allPrimaryCategories = [
@@ -213,11 +216,24 @@ const CreateAd = () => {
             <section className="create-ad-step animate-step-in">
               <h3 className="create-ad-section-title">Select primary category</h3>
 
-              {!formData.category_id ? (
-                <>
-                  <p className="text-muted text-sm mb-4">Choose the field that best describes your service.</p>
-                  <div className="category-grid">
-                    {allPrimaryCategories.map((cat) => (
+            {!formData.category_id ? (
+              <>
+                <p className="text-muted text-sm mb-3">Choose the field that best describes your service.</p>
+                <div className="input-with-icon mb-4" style={{ maxWidth: 340 }}>
+                  <Search size={16} className="input-icon" />
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Search categories..."
+                    value={categorySearch}
+                    onChange={(e) => setCategorySearch(e.target.value)}
+                    style={{ paddingLeft: '2.25rem' }}
+                  />
+                </div>
+                <div className="category-grid">
+                  {allPrimaryCategories
+                    .filter((cat) => cat.name.toLowerCase().includes(categorySearch.toLowerCase()) || cat.desc.toLowerCase().includes(categorySearch.toLowerCase()))
+                    .map((cat) => (
                       <div
                         key={cat.id}
                         role="button"
@@ -231,58 +247,93 @@ const CreateAd = () => {
                         <p className="text-muted text-sm m-0">{cat.desc}</p>
                       </div>
                     ))}
-                  </div>
-                </>
-              ) : (
-                <>
-                  <p className="category-change-hint">Tap again on the category below to choose a different one</p>
-                  <div className="category-selection-focused">
-                  <div
-                    role="button"
-                    tabIndex={0}
-                    className="category-card is-selected category-card-expanded"
-                    onClick={() => handlePrimaryCategoryClick(formData.category_id)}
-                    onKeyDown={(e) => e.key === 'Enter' && handlePrimaryCategoryClick(formData.category_id)}
-                  >
-                    <div className="category-icon">{selectedCategory?.icon}</div>
-                    <h4 className="category-title">{selectedCategory?.name}</h4>
-                    <p className="text-muted text-sm m-0">{selectedCategory?.desc}</p>
-                  </div>
+                  {allPrimaryCategories.filter((cat) => cat.name.toLowerCase().includes(categorySearch.toLowerCase()) || cat.desc.toLowerCase().includes(categorySearch.toLowerCase())).length === 0 && (
+                    <p className="text-muted text-sm" style={{ gridColumn: '1/-1' }}>No matching categories. Try "Other Services" for a custom entry.</p>
+                  )}
+                </div>
+              </>
+            ) : (
+              <>
+                <p className="category-change-hint">Tap again on the category below to choose a different one</p>
+                <div className="category-selection-focused">
+                <div
+                  role="button"
+                  tabIndex={0}
+                  className="category-card is-selected category-card-expanded"
+                  onClick={() => handlePrimaryCategoryClick(formData.category_id)}
+                  onKeyDown={(e) => e.key === 'Enter' && handlePrimaryCategoryClick(formData.category_id)}
+                >
+                  <div className="category-icon">{selectedCategory?.icon}</div>
+                  <h4 className="category-title">{selectedCategory?.name}</h4>
+                  <p className="text-muted text-sm m-0">{selectedCategory?.desc}</p>
+                </div>
 
-                  <div className="subcategory-panel">
-                    <h4 className="subcategory-panel-title">Choose subcategory</h4>
-                    <p className="text-muted text-sm mb-3">Required to continue</p>
-                    {formData.category_id !== 'other' ? (
-                      <div className="subcategory-chip-wrap">
-                        {subCategoriesData[formData.category_id]?.map((sub) => (
-                          <button
-                            key={sub}
-                            type="button"
-                            className={`subcategory-chip ${formData.subcategory_id === sub ? 'is-selected' : ''}`}
-                            onClick={() => setFormData((prev) => ({ ...prev, subcategory_id: sub }))}
-                          >
-                            {sub}
-                            {formData.subcategory_id === sub && <CheckCircle size={14} />}
-                          </button>
-                        ))}
-                      </div>
-                    ) : (
-                      <div className="subcategory-other-input">
-                        <label className="fw-500 mb-2 d-block">Your service type</label>
+                <div className="subcategory-panel">
+                  <h4 className="subcategory-panel-title">Choose subcategory</h4>
+                  <p className="text-muted text-sm mb-3">Required to continue</p>
+                  {formData.category_id !== 'other' ? (
+                    <>
+                      <div className="input-with-icon mb-3">
+                        <Search size={15} className="input-icon" />
                         <input
                           type="text"
-                          placeholder="e.g. Tree Cutting"
-                          className="form-control"
-                          name="subcategory_id"
-                          onChange={handleChange}
-                          value={formData.subcategory_id || ''}
+                          className="form-control form-control-sm"
+                          placeholder="Search subcategories..."
+                          value={subcategorySearch}
+                          onChange={(e) => setSubcategorySearch(e.target.value)}
+                          style={{ paddingLeft: '2.1rem' }}
                         />
                       </div>
-                    )}
-                  </div>
+                      <div className="subcategory-chip-wrap">
+                        {(subCategoriesData[formData.category_id] || [])
+                          .filter((sub) => sub.toLowerCase().includes(subcategorySearch.toLowerCase()))
+                          .map((sub) => (
+                            <button
+                              key={sub}
+                              type="button"
+                              className={`subcategory-chip ${formData.subcategory_id === sub && !formData.subcategory_other ? 'is-selected' : ''}`}
+                              onClick={() => setFormData((prev) => ({ ...prev, subcategory_id: sub, subcategory_other: '' }))}
+                            >
+                              {sub}
+                              {formData.subcategory_id === sub && !formData.subcategory_other && <CheckCircle size={14} />}
+                            </button>
+                          ))}
+                        {(subCategoriesData[formData.category_id] || []).filter((sub) => sub.toLowerCase().includes(subcategorySearch.toLowerCase())).length === 0 && (
+                          <p className="text-muted text-sm m-0">No matches — use the field below.</p>
+                        )}
+                      </div>
+                      <div className="subcategory-other-input" style={{ marginTop: '1rem' }}>
+                        <label className="fw-500 mb-2 d-block text-sm">Other – specify your subcategory</label>
+                        <input
+                          type="text"
+                          placeholder="e.g. Rooftop waterproofing"
+                          className="form-control form-control-sm"
+                          value={formData.subcategory_other || ''}
+                          onChange={(e) => setFormData((prev) => ({
+                            ...prev,
+                            subcategory_other: e.target.value,
+                            subcategory_id: e.target.value ? `Other: ${e.target.value}` : prev.subcategory_id
+                          }))}
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    <div className="subcategory-other-input">
+                      <label className="fw-500 mb-2 d-block">Your service type</label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Tree Cutting"
+                        className="form-control"
+                        name="subcategory_id"
+                        onChange={handleChange}
+                        value={formData.subcategory_id || ''}
+                      />
+                    </div>
+                  )}
                 </div>
-                </>
-              )}
+              </div>
+              </>
+            )}
             </section>
           )}
 
