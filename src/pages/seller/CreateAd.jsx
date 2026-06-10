@@ -3,7 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import {
   Zap, Wrench, Monitor, Paintbrush, Scissors, Camera, Briefcase,
   ChevronRight, ChevronLeft, CheckCircle, UploadCloud, Plus, X, Image as ImageIcon,
-  ArrowLeft, Sparkles, Info, Search
+  ArrowLeft, Sparkles, Info, Search, MapPin
 } from 'lucide-react';
 import './Seller.css';
 
@@ -31,7 +31,9 @@ const CreateAd = () => {
     service_video: '',
     avg_response_time: '',
     service_catalogue: [],
-    previous_projects: []
+    previous_projects: [],
+    show_map: false,
+    map_location: null
   });
 
   const categories = [
@@ -377,6 +379,22 @@ const CreateAd = () => {
                       placeholder="e.g. Nugegoda"
                     />
                   </div>
+                </div>
+
+                <div className="form-group mb-4">
+                  <div className="d-flex align-center justify-between mb-2">
+                    <label className="create-ad-label m-0">Precise Location <span className="text-muted text-sm fw-500">(Optional)</span></label>
+                    <button type="button" className="btn btn-outline btn-sm" style={{ padding: '0.4rem 0.8rem', minHeight: 'auto' }} onClick={() => setFormData(prev => ({...prev, show_map: !prev.show_map}))}>
+                      <MapPin size={14} /> {formData.show_map ? 'Remove Map' : 'Set on Map'}
+                    </button>
+                  </div>
+                  {formData.show_map && (
+                    <div className="google-map-placeholder rounded bg-gray-light d-flex align-center justify-center flex-column" style={{ height: '220px', border: '2px dashed var(--med-gray)', cursor: 'pointer' }}>
+                      <MapPin size={32} color="var(--primary-color)" className="mb-2" />
+                      <p className="fw-500 m-0 text-primary">Google Maps Integration</p>
+                      <p className="text-muted text-sm m-0">Pinpoint your exact service radius</p>
+                    </div>
+                  )}
                 </div>
 
                 <div className="form-group">
