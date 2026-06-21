@@ -65,6 +65,34 @@
   border-color: var(--primary-color);
 }
 
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  border: 1px solid var(--med-gray);
+  text-align: left;
+}
+
+.search-dropdown-item {
+  padding: 0.5rem var(--space-3);
+  cursor: pointer;
+  transition: background 0.2s;
+  color: var(--text-main);
+  font-size: 0.875rem;
+}
+
+.search-dropdown-item:hover {
+  background: var(--light-gray);
+  color: var(--primary-color);
+}
+
 .price-inputs {
   display: flex;
   align-items: center;

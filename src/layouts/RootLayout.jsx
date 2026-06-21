@@ -43,7 +43,7 @@ const RootLayout = () => {
             </nav>
 
             <div className="nav-actions">
-              <button type="button" className="icon-btn" aria-label="Search"><Search size={20} /></button>
+              {/* <button type="button" className="icon-btn" aria-label="Search"><Search size={20} /></button> */}
               <Link to="/login" className="btn btn-outline">Login</Link>
               <Link to="/register" className="btn btn-primary">Sign Up</Link>
             </div>
@@ -70,14 +70,6 @@ const RootLayout = () => {
             <p>Your trusted Sri Lankan service marketplace.</p>
           </div>
           <div className="footer-links">
-            <div>
-              <h3>Services</h3>
-              <ul>
-                <li>Home Repair</li>
-                <li>Cleaning</li>
-                <li>Tutors</li>
-              </ul>
-            </div>
             <div>
               <h3>Company</h3>
               <ul>

@@ -36,7 +36,6 @@
   background: var(--primary-light);
   padding: var(--space-10) 0;
   position: relative;
-  overflow: hidden;
 }
 
 .hero-container {
@@ -121,6 +120,35 @@
   padding: 0 2rem;
   border-radius: var(--radius-xl);
   font-size: 1.125rem;
+}
+
+.search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  margin-top: 0.5rem;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  border: 1px solid var(--light-gray);
+  text-align: left;
+}
+
+.search-dropdown-item {
+  padding: 0.75rem var(--space-4);
+  cursor: pointer;
+  transition: background 0.2s;
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+.search-dropdown-item:hover {
+  background: var(--light-gray);
+  color: var(--primary-color);
 }
 
 .popular-searches {
