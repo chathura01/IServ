@@ -84,11 +84,10 @@ const Search = () => {
 
           <div className="filter-group">
             <h4>Rating</h4>
-            <div className="radio-group">
-              <label><input type="radio" name="rating" /> 4.5 & up</label>
-              <label><input type="radio" name="rating" /> 4.0 & up</label>
-              <label><input type="radio" name="rating" /> 3.0 & up</label>
-              <label><input type="radio" name="rating" defaultChecked /> Any Rating</label>
+            <div className="price-inputs">
+              <input type="number" placeholder="Min" min="1" max="5" step="0.1" />
+              <span>-</span>
+              <input type="number" placeholder="Max" min="1" max="5" step="0.1" />
             </div>
           </div>
 

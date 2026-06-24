@@ -1,125 +1,271 @@
-.provider-banner {
-  background-color: var(--accent-navy);
-  color: var(--white);
-  padding: var(--space-8) 0;
+/* ProviderProfile.css */
+.provider-profile-page {
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.provider-hero {
+  position: relative;
+  height: 380px;
+  background: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=2070&auto=format&fit=crop') center/cover;
+  display: flex;
+  align-items: flex-end;
   margin-top: -1px;
 }
 
-.banner-content {
+.provider-hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.3) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding-bottom: 2rem;
+}
+
+.provider-header {
   display: flex;
-  align-items: center;
-  gap: var(--space-6);
+  align-items: flex-end;
+  gap: 2.5rem;
 }
 
-.avatar-wrapper img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
+.avatar-container {
+  position: relative;
+}
+
+.avatar-container img {
+  width: 180px;
+  height: 180px;
+  border-radius: 20px;
   border: 4px solid var(--white);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   object-fit: cover;
+  background: var(--white);
 }
 
-.provider-header-info {
+.verified-badge {
+  position: absolute;
+  bottom: 10px;
+  right: -10px;
+  background: var(--white);
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  display: flex;
+}
+
+.header-info-content {
+  color: var(--white);
+  margin-bottom: 0.5rem;
   flex: 1;
 }
 
-.provider-header-info h1 {
-  font-size: 2.5rem;
+.header-info-content h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.25rem;
-}
-
-.verified-icon {
-  color: var(--success-green);
 }
 
 .provider-tagline {
-  font-size: 1.25rem;
-  color: #ccd6f6;
-  margin-bottom: var(--space-3);
+  font-size: 1.3rem;
+  color: #cbd5e1;
+  margin-bottom: 1.2rem;
+  font-weight: 500;
 }
 
-.provider-meta {
+.provider-meta-stats {
   display: flex;
-  gap: var(--space-4);
-  font-size: 0.875rem;
-  color: #a8b2d1;
+  gap: 2rem;
 }
 
-.provider-meta span {
+.meta-stat {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #f1f5f9;
 }
 
-.provider-actions {
+.header-actions {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-3);
+  gap: 1rem;
+  margin-bottom: 1rem;
 }
 
-.provider-layout {
+.header-actions .btn {
   display: flex;
-  gap: var(--space-6);
-  align-items: flex-start;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.provider-sidebar {
-  width: 300px;
+/* Portfolio Layout */
+.portfolio-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
 }
 
-.provider-main {
-  flex: 1;
+/* Sidebar Sections */
+.portfolio-sidebar .card {
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+  background: var(--white);
+}
+
+.sidebar-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-main);
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skills-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  background: #f1f5f9;
+  color: #475569;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.skill-tag:hover {
+  background: var(--primary-light);
+  color: var(--primary-color);
+}
+
+.info-item {
+  margin-bottom: 1rem;
+}
+
+.info-item:last-child {
+  margin-bottom: 0;
 }
 
 .info-item strong {
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   color: var(--text-main);
 }
 
-@media (max-width: 1024px) {
-  .provider-layout {
-    flex-direction: column;
-  }
-
-  .provider-sidebar {
-    width: 100%;
-  }
+/* Main Content Sections */
+.portfolio-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-@media (max-width: 768px) {
-  .banner-content {
+.portfolio-section {
+  background: var(--white);
+  padding: 2.5rem;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.section-header {
+  margin-bottom: 1.5rem;
+}
+
+.section-header h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 220px;
+  cursor: pointer;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 23, 42, 0.75);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-weight: 600;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+/* Results Grid tweaks */
+.portfolio-section .results-grid {
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+  .portfolio-layout {
+    grid-template-columns: 1fr;
+  }
+  .provider-header {
     flex-direction: column;
+    align-items: center;
     text-align: center;
+    gap: 1.5rem;
   }
-
-  .provider-header-info h1 {
-    font-size: 1.75rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .provider-tagline {
-    font-size: 1rem;
-  }
-
-  .provider-meta {
+  .provider-meta-stats {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 1rem;
   }
-
-  .provider-actions {
-    width: 100%;
+  .header-actions {
+    justify-content: center;
   }
-
-  .provider-actions .btn {
-    width: 100%;
-  }
-
-  .avatar-wrapper img {
-    width: 110px;
-    height: 110px;
+  .avatar-container img {
+    width: 140px; height: 140px;
   }
 }
