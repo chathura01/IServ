@@ -131,23 +131,6 @@ const ProviderProfile = () => {
                 </p>
               </div>
 
-              {/* Portfolio Gallery */}
-              <div className="portfolio-section">
-                <div className="section-header">
-                  <h2><ImageIcon size={24} style={{verticalAlign: 'bottom', marginRight: '0.5rem', color: 'var(--primary-color)'}}/> Past Projects Portfolio</h2>
-                </div>
-                <div className="gallery-grid">
-                  {galleryImages.map((img, idx) => (
-                    <div className="gallery-item" key={idx}>
-                      <img src={img.url} alt={img.title} />
-                      <div className="gallery-overlay">
-                        <span>{img.title}</span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
               {/* Services Offered */}
               <div className="portfolio-section">
                 <div className="section-header">
@@ -175,6 +158,23 @@ const ProviderProfile = () => {
                         <div className="service-actions">
                           <Link to={`/service/${num}`} className="btn btn-outline btn-sm" style={{padding: '0.4rem 1rem', borderRadius: 'var(--radius-full)'}}>View Details</Link>
                         </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Portfolio Gallery */}
+              <div className="portfolio-section">
+                <div className="section-header">
+                  <h2><ImageIcon size={24} style={{verticalAlign: 'bottom', marginRight: '0.5rem', color: 'var(--primary-color)'}}/> Past Projects Portfolio</h2>
+                </div>
+                <div className="gallery-grid">
+                  {galleryImages.map((img, idx) => (
+                    <div className="gallery-item" key={idx}>
+                      <img src={img.url} alt={img.title} />
+                      <div className="gallery-overlay">
+                        <span>{img.title}</span>
                       </div>
                     </div>
                   ))}
