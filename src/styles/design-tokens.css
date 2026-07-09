@@ -1,21 +1,27 @@
 :root {
   /* Brand Colors */
-  --primary-color: #58a4d6;
-  --primary-hover: #468ebb;
-  --primary-light: #e6f2fa;
-  --secondary-soft-blue: #a3cce8;
+  --palette-0B2545: #0B2545;
+  --palette-134074: #134074;
+  --palette-B79B74: #B79B74;
+  --palette-757E57: #757E57;
+
+  --primary-color: #134074;
+  --primary-hover: #0B2545;
+  --primary-light: #eef2f6; /* Very light subtle navy-tint grey */
+  --secondary-soft-blue: #B79B74; /* Repurposed to Tan Accent */
+  
   --white: #ffffff;
-  --light-gray: #f5f7f9;
-  --med-gray: #e0e5e9;
-  --text-main: #1e293b;
-  --text-muted: #64748b;
+  --light-gray: #f8f9fa; /* slightly warmer light gray */
+  --med-gray: #e2e4e8;
+  --text-main: #0B2545; /* Dark navy for text */
+  --text-muted: #5a6672; /* Subtle gray influenced by olive/navy */
   
   /* Accent Colors */
-  --accent-navy: #0f172a;
-  --success-green: #10b981;
-  --success-light: #d1fae5;
-  --warning-orange: #f59e0b;
-  --danger-red: #ef4444;
+  --accent-navy: #0B2545;
+  --success-green: #757E57; /* Olive instead of generic green */
+  --success-light: #e6eadf; /* Light olive tint */
+  --warning-orange: #B79B74; /* Tan instead of orange */
+  --danger-red: #ef4444; /* Keep red for explicit danger but optionally can darken */
 
   /* Typography */
   --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
